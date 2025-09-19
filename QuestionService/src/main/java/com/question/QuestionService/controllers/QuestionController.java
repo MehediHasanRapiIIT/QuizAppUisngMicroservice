@@ -8,29 +8,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/question")
+@RequestMapping("/")
 public class QuestionController {
     private QuestionService questionService;
 
     public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
     }
-    @PostMapping
+    @PostMapping("question")
     public Question create(@RequestBody Question question){
         return questionService.create(question);
     }
 
-    @GetMapping
+    @GetMapping("question")
     public List<Question> get(){
         return questionService.get();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("question/{id}")
     public Question get(@PathVariable Long id){
         return questionService.getOne(id);
     }
 
-    @GetMapping("/quiz/{quizId}")
+    @GetMapping("question/quiz/{quizId}")
     public List<Question> getQuestionByQuiz(@PathVariable Long quizId){
         return questionService.getQuestionByQuiz(quizId);
     }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/quiz")
+@RequestMapping("/")
 public class QuizController {
 
     private QuizService quizService;
@@ -18,16 +18,16 @@ public class QuizController {
     }
     //create
 
-    @PostMapping
+    @PostMapping("quiz")
     public Quiz create(@RequestBody Quiz quiz){
         return quizService.add(quiz);
     }
 
-    @GetMapping
+    @GetMapping("quiz")
     public List<Quiz> get(){
         return quizService.get();
     }
-    @GetMapping("/{id}")
+    @GetMapping("quiz/{id}")
     public Quiz getOne(@PathVariable Long id){
         return quizService.get(id);
     }
